@@ -1,1 +1,30 @@
-<p>recipe-detail works!</p>
+<div class="row" style="height: 300px;">
+    <div class="col-12 h-100 d-inline-block">
+        <img src="{{selectedForDetail.imgPath}}" alt="" class="img-fluid h-100">
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <h2 class="fw-bold">{{selectedForDetail.name}}</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div ngbDropdown ngbDropdownToggle class="btn btn-primary"
+             style="cursor: pointer; top:auto;"
+             id="dropdownMenuLink"
+             aria-expanded="false">Recipe Options
+            <ul ngbDropdownMenu aria-labelledby="dropdownMenuLink" style="position: absolute;">
+                <li ngbDropdownItem>Add ingredients to Shopping List</li>
+                <li ngbDropdownItem>Edit Recipe</li>
+                <li ngbDropdownItem>Delete Recipe</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        {{selectedForDetail.description}}
+    </div>
+</div>
+

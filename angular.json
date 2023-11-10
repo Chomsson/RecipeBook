@@ -29,8 +29,6 @@
               "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": [
-              "node_modules/primeng/resources/themes/luna-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
               "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
