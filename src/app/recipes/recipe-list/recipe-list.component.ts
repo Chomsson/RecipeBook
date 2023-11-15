@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, HostBinding, HostListener, Output} from '@angular/core';
 import {Recipe} from "../recipe.model";
 
 @Component({
@@ -16,4 +16,6 @@ export class RecipeListComponent {
     onListItemSelected(forItem: Recipe){
         this.listItemSelected.emit(forItem);
     }
+
+
 }
