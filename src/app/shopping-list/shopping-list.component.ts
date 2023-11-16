@@ -1,18 +1,29 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Ingredient} from "../shared/ingredient.model";
+import {ShoppingListService} from "./shopping-list.service";
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent {
-    ingredients: Ingredient[] = [
-        new Ingredient("cebula", 2),
-        new Ingredient("burak", 3)
-    ];
+export class ShoppingListComponent implements OnInit{
+    ingredients: Ingredient[];
 
-   onIngredientAddedFromEdit(ingFromEvent: Ingredient){
-      this.ingredients.push(ingFromEvent);
-   }
+    constructor(private shoppingListService: ShoppingListService) {
+    }
+    ngOnInit() {
+       this.ingredients = this.shoppingListService.getIngredients();
+       this.shoppingListService.ingredientsChanged
+          .subscribe(
+             (ingredientsMethod: Ingredient[])=>{
+                this.ingredients = ingredientsMethod;
+             }
+          );
+    }
+
+   // onIngredientAddedFromEdit(ingFromEvent: Ingredient){
+   //    this.ingredients.push(ingFromEvent);
+   // }  <-- w serwisie
+
 }

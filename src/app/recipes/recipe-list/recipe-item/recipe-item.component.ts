@@ -1,5 +1,6 @@
 import {Component, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
 import {Recipe} from "../../recipe.model";
+import {RecipeService} from "../../recipe.service";
 
 @Component({
   selector: 'app-recipe-item',
@@ -9,10 +10,11 @@ import {Recipe} from "../../recipe.model";
 export class RecipeItemComponent {
 
     @Input() recipeItemVar: Recipe;
-    @Output() itemSelected = new EventEmitter<void>();
 
+    constructor(private recipeService: RecipeService) {
+    }
     onItemSelected(){
-        this.itemSelected.emit();
+      this.recipeService.recipeSelected.emit(this.recipeItemVar);
     }
 
    @HostBinding('style.border') border: string;

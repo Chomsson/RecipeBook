@@ -4,11 +4,11 @@
         <ul class="list-group">
             <li class="list-group-item"
                 *ngFor="let forItem of ingredients"
-            >{{forItem.name}} | {{forItem.amount}}
+            >{{forItem.name}} ( {{forItem.amount}} {{forItem.measureType}} )
             </li>
         </ul>
     </div>
     <div class="col-6">
-        <app-shopping-list-edit (addedIng)="onIngredientAddedFromEdit($event)"></app-shopping-list-edit>
+        <app-shopping-list-edit></app-shopping-list-edit>
     </div>
 </div>

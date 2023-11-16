@@ -8,7 +8,6 @@
     <ol class="list-group list-group-numbered col-12">
         <app-recipe-item
             *ngFor="let forItem of recipes"
-            [recipeItemVar]="forItem"
-            (itemSelected)="onListItemSelected(forItem)"></app-recipe-item>
+            [recipeItemVar]="forItem"></app-recipe-item>
     </ol>
 </div>
