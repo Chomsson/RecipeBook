@@ -21,7 +21,7 @@ export class RecipeItemComponent {
 
    @HostListener('mouseover', ['$event'])
    private onMouseOver(){
-      this.border = '2px solid blue';
+      this.border = '1px solid blue';
    }
 
    @HostListener('mouseout', ['$event'])
