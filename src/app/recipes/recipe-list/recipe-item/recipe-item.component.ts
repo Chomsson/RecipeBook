@@ -10,22 +10,22 @@ import {RecipeService} from "../../recipe.service";
 export class RecipeItemComponent {
 
     @Input() recipeItemVar: Recipe;
+    @Input() index: number;
 
-    constructor(private recipeService: RecipeService) {
-    }
-    onItemSelected(){
-      this.recipeService.recipeSelected.emit(this.recipeItemVar);
-    }
+    // onItemSelected(){
+    //   this.recipeService.recipeSelected.emit(this.recipeItemVar);
+    // }
+   // zastapione routingiem po ID
 
-   @HostBinding('style.border') border: string;
+   @HostBinding('style.border') bgc: string;
 
    @HostListener('mouseover', ['$event'])
    private onMouseOver(){
-      this.border = '1px solid blue';
+      this.bgc = '1px solid blue';
    }
 
    @HostListener('mouseout', ['$event'])
    private onMouseOut():void {
-      this.border = '';
+      this.bgc = '';
    }
 }
