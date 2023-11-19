@@ -1,12 +1,19 @@
 <div class="row">
     <div class="col-6 mt-2 border-end">
         <h3 style="color:steelblue">List of Ingredients</h3>
-        <ul class="list-group">
-            <li class="list-group-item"
-                *ngFor="let forItem of ingredients"
-            >{{forItem.name}} ( {{forItem.amount}} {{forItem.measureType}} )
-            </li>
-        </ul>
+       <ol class="list-group list-group-numbered">
+          <li class="list-group-item
+         d-flex
+         justify-content-between
+         align-items-start"
+              *ngFor="let forItem of ingredients">
+             <div class="ms-2 me-auto">
+                {{forItem.name}}
+             </div>
+             <span class="badge bg-primary rounded-pill" style="font-size: medium">
+            {{forItem.amount}} {{forItem.measureType}}</span>
+          </li>
+       </ol>
     </div>
     <div class="col-6">
         <app-shopping-list-edit></app-shopping-list-edit>

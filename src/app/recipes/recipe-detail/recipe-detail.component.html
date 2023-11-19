@@ -15,7 +15,7 @@
            id="dropdownMenuLink"
            aria-expanded="false">Recipe Options
          <ul ngbDropdownMenu aria-labelledby="dropdownMenuLink" style="position: absolute;">
-            <li ngbDropdownItem>Add ingredients to Shopping List</li>
+            <li ngbDropdownItem (click)="addIngredientsToShoppingList()">Add ingredients to Shopping List</li>
             <li ngbDropdownItem>Edit Recipe</li>
             <li ngbDropdownItem>Delete Recipe</li>
          </ul>

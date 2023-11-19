@@ -12,26 +12,30 @@ import {ShoppingListEditComponent} from './shopping-list/shopping-list-edit/shop
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {DropdownModule} from "primeng/dropdown";
 import {FormsModule} from "@angular/forms";
+import {AppRoutingModule} from "./app-routing.module";
+import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        ShoppingListComponent,
-        RecipesComponent,
-        RecipeListComponent,
-        HeaderComponent,
-        RecipeItemComponent,
-        RecipeDetailComponent,
-        ShoppingListEditComponent
-    ],
-    imports: [
-        BrowserModule,
-        NgbModule,
-        DropdownModule,
-        FormsModule
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      ShoppingListComponent,
+      RecipesComponent,
+      RecipeListComponent,
+      HeaderComponent,
+      RecipeItemComponent,
+      RecipeDetailComponent,
+      ShoppingListEditComponent,
+      RecipeStartComponent
+   ],
+   imports: [
+      BrowserModule,
+      NgbModule,
+      DropdownModule,
+      FormsModule,
+      AppRoutingModule
+   ],
+   providers: [],
+   bootstrap: [AppComponent]
 })
 export class AppModule {
 }

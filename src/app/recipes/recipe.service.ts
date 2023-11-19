@@ -2,6 +2,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {Recipe} from "./recipe.model";
 import {Ingredient} from "../shared/ingredient.model";
 import {MeasureTypes} from "../shared/enums";
+import {ShoppingListService} from "../shopping-list/shopping-list.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,26 +12,30 @@ export class RecipeService {
 
 
    private recipes: Recipe[] = [
-      new Recipe('kebab box',
+      new Recipe('Kebab box XXL',
          'bez surówek hehe mordo',
          'assets/kebab-box.jpg',
          [
-            new Ingredient('Mięso', 500, MeasureTypes.g),
-            new Ingredient('Frytki', 200, MeasureTypes.g)
+            new Ingredient('Chicken meat', 500, MeasureTypes.g),
+            new Ingredient('Fries', 200, MeasureTypes.g)
          ]
          ),
       new Recipe('burger',
          'fat burger',
          'assets/burger.avif',
          [
-            new Ingredient('Bułka', 1, MeasureTypes.pieces),
-            new Ingredient('Mięso', 300, MeasureTypes.g),
-            new Ingredient('Ser', 2, MeasureTypes.slices)
+            new Ingredient('Bun', 1, MeasureTypes.pieces),
+            new Ingredient('Meat', 300, MeasureTypes.g),
+            new Ingredient('Cheese', 2, MeasureTypes.slices)
          ]),
    ];
-   constructor() { }
+   constructor(private shoppingListService: ShoppingListService) { }
 
    getRecipes() {
      return this.recipes.slice();
+   }
+
+   addIngredientsToShoppingListServ(ingredients: Ingredient[]){
+      this.shoppingListService.addIngredientsFromRecipe(ingredients);
    }
 }
