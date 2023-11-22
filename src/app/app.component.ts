@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    currentView = 'recipe';
-    navigateToFeatureFromHeader(selectedViewFromEvent: string){
-        this.currentView=selectedViewFromEvent;
-    }
+    // currentView = 'recipe';
+    // navigateToFeatureFromHeader(selectedViewFromEvent: string){
+    //     this.currentView=selectedViewFromEvent;
+    // }
 }

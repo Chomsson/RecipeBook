@@ -10,7 +10,7 @@ import {RecipeService} from "../../recipe.service";
 export class RecipeItemComponent {
 
     @Input() recipeItemVar: Recipe;
-    @Input() index: number;
+    @Input() indexOfItem: number;
 
     // onItemSelected(){
     //   this.recipeService.recipeSelected.emit(this.recipeItemVar);
