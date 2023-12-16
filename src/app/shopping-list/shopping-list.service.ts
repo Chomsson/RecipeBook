@@ -10,6 +10,7 @@ import {NgForm} from "@angular/forms";
 export class ShoppingListService {
 
    ingredientsChanged= new Subject<Ingredient[]>();
+   editingStarted = new Subject<number>();
    private ingredients: Ingredient[] = [
       new Ingredient("Onion", 2, MeasureTypes.kg),
       new Ingredient("Tomato", 3, MeasureTypes.kg)
