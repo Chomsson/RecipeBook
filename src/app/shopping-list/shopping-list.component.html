@@ -1,21 +1,38 @@
 <div class="row">
-    <div class="col-6 mt-2 border-end">
-        <h3 style="color:steelblue">List of Ingredients</h3>
-       <ol class="list-group list-group-numbered">
-          <li class="list-group-item
-         d-flex
-         justify-content-between
-         align-items-start"
-              *ngFor="let forItem of ingredients">
-             <div class="ms-2 me-auto">
-                {{forItem.name}}
-             </div>
-             <span class="badge bg-primary rounded-pill" style="font-size: medium">
+   <div class="col-6 mt-2 border-end">
+      <h3 style="color:steelblue">List of Ingredients</h3>
+      <ol class="list-group list-group-numbered">
+         <li class="list-group-item
+                     d-flex
+                     justify-content-between
+                     align-items-start"
+             *ngFor="let forItem of ingredients; let i = index">
+            <div class="ms-2 me-2">
+               {{forItem.name}}
+            </div>
+            <span class="badge bg-primary rounded-pill me-auto" style="font-size: medium">
             {{forItem.amount}} {{forItem.measureType}}</span>
-          </li>
-       </ol>
-    </div>
-    <div class="col-6">
-        <app-shopping-list-edit></app-shopping-list-edit>
-    </div>
+            <span
+               class="badge bg-success rounded-pill me-2"
+               style="font-size: medium; font-weight: bold; cursor: pointer;">
+               <svg
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-pencil"
+                  viewBox="0 0 16 16"
+                  (click)="onEditIngredient(i)">
+  <path
+     d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+               </svg>
+            </span>
+            <span
+               class="badge bg-danger rounded-pill"
+               style="font-size: medium; font-weight: bold; cursor: pointer;">X</span>
+         </li>
+      </ol>
+   </div>
+   <div class="col-6">
+      <app-shopping-list-edit></app-shopping-list-edit>
+   </div>
 </div>
