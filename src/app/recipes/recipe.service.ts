@@ -10,6 +10,8 @@ import {Subject} from "rxjs";
 })
 export class RecipeService {
 
+   recipesChangedSubject: Subject<Recipe[]> = new Subject<Recipe[]>();
+
    private recipes: Recipe[] = [
       new Recipe('Kebab box XXL',
          'bez surówek hehe mordo',
@@ -38,7 +40,22 @@ export class RecipeService {
       return this.recipes[index];
    }
 
+   addRecipeFromEditPage(recipe: Recipe){
+      this.recipes.push(recipe);
+      this.recipesChangedSubject.next(this.recipes.slice());
+   }
+
+   updateRecipeFromEditPage(index: number, updatedRecipe: Recipe){
+      this.recipes[index] = updatedRecipe;
+      this.recipesChangedSubject.next(this.recipes.slice());
+   }
+
    addIngredientsToShoppingListServ(ingredients: Ingredient[]){
       this.shoppingListService.addIngredientsFromRecipe(ingredients);
+   }
+
+   deleteRecipe(index: number){
+      this.recipes.splice(index, 1);
+      this.recipesChangedSubject.next(this.recipes.slice());
    }
 }

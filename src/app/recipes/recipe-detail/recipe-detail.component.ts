@@ -30,4 +30,8 @@ export class RecipeDetailComponent implements OnInit{
          .addIngredientsToShoppingListServ
          (this.selectedForDetail.ingredients)
    }
+
+   onDeleteSelect(indexToDelete: number){
+       this.recipeService.deleteRecipe(indexToDelete);
+   }
 }

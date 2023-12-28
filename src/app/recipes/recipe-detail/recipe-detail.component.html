@@ -17,14 +17,20 @@
          <ul ngbDropdownMenu aria-labelledby="dropdownMenuLink" style="position: absolute;">
             <li ngbDropdownItem (click)="addIngredientsToShoppingList()">Add ingredients to Shopping List</li>
             <li ngbDropdownItem routerLink="/recipes/{{idOfRecipe}}/edit">Edit Recipe</li>
-            <li ngbDropdownItem>Delete Recipe</li>
+            <li ngbDropdownItem (click)="onDeleteSelect(idOfRecipe)">Delete Recipe</li>
          </ul>
       </div>
    </div>
 </div>
+<br>
 <div class="row">
-   <h5>Needed Ingredients:</h5>
-   <ol class="list-group list-group-numbered">
+   <span
+      class="badge bg-info text-dark"
+      >Needed Ingredients <span class="badge bg-secondary">
+         {{selectedForDetail.ingredients.length}}
+      </span>
+   </span>
+   <ol class="list-group list-group-numbered w-100 p-0">
       <li class="list-group-item
          d-flex
          justify-content-between

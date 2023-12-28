@@ -6,7 +6,7 @@
                <h3 style="color:steelblue"
                    *ngIf="!editMode">Add Recipe</h3>
                <h3 style="color:steelblue"
-                   *ngIf="editMode">Editing Recipe number: {{id + 1}}</h3>
+                   *ngIf="editMode">Editing Recipe number: {{idOfSelectedRecipe + 1}}</h3>
             </div>
          </div>
          <div class="col-12 input-group w-100">
@@ -15,7 +15,7 @@
                type="text"
                id="recipeName"
                class="form-control"
-               formControlName="recipeName">
+               formControlName="name">
          </div>
          <div class="col-12 input-group w-100">
             <label class="w-25 input-group-text" for="imgPath">Image URL:</label>
@@ -32,12 +32,12 @@
          </div>
          <div class="row">
             <div class="col-12 input-group w-100">
-               <label class="input-group-text w-25" for="descriptionID">Description</label>
+               <label class="input-group-text w-25" for="description">Description</label>
                <textarea
                   rows="6"
                   class="form-control"
-                  id="descriptionID"
-                  formControlName="descriptionID"></textarea>
+                  id="description"
+                  formControlName="description"></textarea>
             </div>
          </div>
 
@@ -61,30 +61,27 @@
                </tr>
                </thead>
                <tbody>
-               <tr *ngFor = "let ingCtrl of controls; let i = index;"
+               <tr
+                  *ngFor = "let ingCtrl of controls; let i = index;"
                    [formGroupName]="i">
                   <th scope="row">{{i +1}}</th>
                   <td><input
                      type="text"
                      id="ingName"
                      class="form-control"
-                     formControlName="ingName"
+                     formControlName="name"
                   ></td>
                   <td><input
                      type="number"
                      id="ingAmount"
                      class="form-control"
-                     formControlName="ingAmount"
-                     min="1"
-                     oninput="validity.valid||(value='');"
-                     [pattern]="'^[1-9]+[0-9]*$'"></td>
+                     formControlName="amount"></td>
                   <td><select ngbDropdown ngbDropdownToggle
                               class="form-select"
                               id="dropdownMeasure"
                               aria-expanded="false"
                               name="measureType"
-                              formControlName="dropdownMeasure"
-                              required>
+                              formControlName="measureType">
                      <option value="none" selected disabled hidden></option>
                      <option *ngFor="let measureOptions of measureTypes"
                              [value]="measureOptions">{{measureOptions}}</option>
@@ -150,6 +147,7 @@
          <div class="row mt-5 justify-content-between">
             <div class="col-3">
                <button
+                  [disabled]="!recipeForm.valid"
                   type="submit"
                   class="m-2 btn btn-success"
                   >Save Recipe</button>
@@ -160,6 +158,12 @@
                   class="btn btn-danger"
                   (click)="onFormClearButtonClick()">Clear Form</button>
             </div>
+         </div>
+
+         <div class="row w-auto">
+            <div *ngIf="!recipeForm.valid && recipeForm.touched"
+                 class="alert alert-info"
+            >Provide all necessary info about recipe</div>
          </div>
       </form>
    </div>
