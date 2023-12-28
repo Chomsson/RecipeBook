@@ -11,7 +11,7 @@ import {Subscription} from "rxjs";
   styleUrls: ['./shopping-list-edit.component.css']
 })
 export class ShoppingListEditComponent implements OnInit, OnDestroy{
-   @ViewChild('ingredientForm') formVar = NgForm;
+   @ViewChild('ingredientForm') formVar: NgForm;
    public measureTypes = Object.values(MeasureTypes);
    editingSubscription: Subscription;
    editingStarted = false;
@@ -27,6 +27,11 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy{
                this.editingItemIndex = index;
                this.editingStarted = true;
                this.editingItemInfo = this.shoppingListService.getIngredient(index);
+               this.formVar.setValue({
+                  name: this.editingItemInfo.name,
+                  amount: this.editingItemInfo.amount,
+                  measureType: this.editingItemInfo.measureType
+               })
             }
          );
    }
@@ -36,9 +41,26 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy{
    }
 
    onIngredientSubmit(form: NgForm){
+      if(!this.editingStarted){
       this.shoppingListService.addIngredient(form.value);
+      }
+      else{
+         this.shoppingListService.updateIngredient(this.editingItemIndex, form.value);
+         }
+      this.editingStarted = false;
+      this.formVar.reset();
    }
 
+   onDeleteIngredientButtonClick(){
+      this.formVar.reset();
+      this.editingStarted = false;
+      this.shoppingListService.onDeleteIngredientFromList(this.editingItemIndex);
+   }
+
+   onClearFormButtonClick(){
+      this.formVar.reset();
+      this.editingStarted = false;
+   }
 }
 
 

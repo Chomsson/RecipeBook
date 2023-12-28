@@ -32,10 +32,16 @@ export class ShoppingListService {
 
    addIngredientsFromRecipe(ingredients: Ingredient[]){
      this.ingredients.push(...ingredients);
-     this.ingredientsChanged.next(this.ingredients.slice())
+     this.ingredientsChanged.next(this.ingredients.slice());
    }
 
-   onDeleteIngredientFromList(){
+   updateIngredient(index: number, updatedIngredient: Ingredient){
+      this.ingredients[index] = updatedIngredient;
+      this.ingredientsChanged.next(this.ingredients.slice());
+   }
 
+   onDeleteIngredientFromList(index: number){
+      this.ingredients.splice(index, 1);
+      this.ingredientsChanged.next(this.ingredients.slice());
    }
 }

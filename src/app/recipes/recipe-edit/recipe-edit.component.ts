@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
+import {MeasureTypes} from "../../shared/enums";
 
 @Component({
   selector: 'app-recipe-edit',
@@ -9,6 +10,8 @@ import {ActivatedRoute, Params} from "@angular/router";
 export class RecipeEditComponent implements OnInit{
    id: number;
    editMode = false;
+   public measureTypes: MeasureTypes[] = Object.values(MeasureTypes);
+
 
    constructor(private route: ActivatedRoute) {
    }

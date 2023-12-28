@@ -1,6 +1,68 @@
-<div *ngIf="editMode">
-   <p>edit works {{id}}</p>
-</div>
-<div *ngIf="!editMode">
-   <p>new works {{id}}</p>
-</div>
+<div class="row">
+      <div class="col">
+         <form>
+            <div class="row">
+               <div class="col-12">
+                  <button type="submit" class="m-2 btn btn-success">Save</button>
+                  <button type="button" class="btn btn-danger">Cancel</button>
+               </div>
+            </div>
+            <div class="col-12 input-group w-100">
+               <label class="input-group-text w-25" for="recipeName">Recipe Name:</label>
+                  <input type="text" id="recipeName" class="form-control">
+            </div>
+            <div class="col-12 input-group w-100">
+               <label class="w-25 input-group-text" for="imgPath">Image URL:</label>
+                  <input type="text" id="imgPath" class="form-control">
+            </div>
+            <div class="row">
+               <div class="col-12">
+                  <img src="" alt="" class="img-thumbnail">
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-12 input-group w-100">
+                  <label class="input-group-text w-25" for="descriptionID">Description</label>
+                  <textarea
+                     rows="6"
+                     class="form-control"
+                     id="descriptionID"></textarea>
+               </div>
+            </div>
+            <h5>Ingredients: </h5>
+            <div class="row">
+
+               <div class="col-5">
+                  <label class="input-group-text" for="ingName">Name</label>
+                  <input type="text" id="ingName" class="form-control">
+               </div>
+               <div class="col-3">
+                  <label class="input-group-text" for="ingAmount">Amount</label>
+                  <input
+                     type="number"
+                     id="ingAmount"
+                     class="form-control"
+                     min="1"
+                     oninput="validity.valid||(value='');"
+                     [pattern]="'^[1-9]+[0-9]*$'">
+               </div>
+               <div class="col-3">
+                  <label class="input-group-text" for="dropdownMeasure">Measure Type</label>
+                  <select ngbDropdown ngbDropdownToggle
+                          class="form-select"
+                          id="dropdownMeasure"
+                          aria-expanded="false"
+                          name="measureType"
+                          ngModel
+                          required>
+                     <option *ngFor="let measureOptions of measureTypes"
+                             [value]="measureOptions">{{measureOptions}}</option>
+                  </select>
+               </div>
+               <div class="col-1">
+                  <button class="btn btn-danger">X</button>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>

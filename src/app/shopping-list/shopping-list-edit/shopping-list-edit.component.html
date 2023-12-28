@@ -1,4 +1,5 @@
-<h3 style="color:steelblue">Edit Ingredients</h3>
+<h3 *ngIf="!editingStarted" style="color:steelblue">Add Ingredient</h3>
+<h3 *ngIf="editingStarted" style="color:steelblue">Edit Ingredient number: {{editingItemIndex +1}}</h3>
 <div class="row">
    <div class="col-12">
       <form
@@ -43,9 +44,17 @@
             </div>
             <div class="row">
                <div class="col">
-                  <button [disabled]="!ingredientForm.valid" class=" btn btn-success" type="submit">Add</button>
-                  <button class="m-2 btn btn-danger" type="button">Delete</button>
-                  <button class=" btn btn-primary" type="button">Clear</button>
+                  <button [disabled]="!ingredientForm.valid" class=" btn btn-success" type="submit">{{ editingStarted ? 'Update' : 'Add' }}</button>
+
+                  <button class="m-2 btn btn-primary"
+                          type="button"
+                           (click)="onClearFormButtonClick()">
+                              Clear</button>
+                  <button class="btn btn-danger"
+                          *ngIf="editingStarted"
+                          type="button"
+                          (click)="onDeleteIngredientButtonClick()">
+                     Delete</button>
                </div>
             </div>
             <div class="row w-auto">
