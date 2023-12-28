@@ -1,16 +1,17 @@
 <div class="row mt-3 ms-2">
 
-    <div class="col-12">
-        <button
-           class="btn btn-success"
-            (click)="onNewRecipe()">New Recipe</button>
-    </div>
+   <div class="col-12">
+      <button
+         class="btn btn-success"
+         (click)="onNewRecipe()">New Recipe
+      </button>
+   </div>
 </div>
 <div class="row m-3">
-    <ol class="list-group list-group-numbered col-12">
-        <app-recipe-item
-            *ngFor="let forItem of recipes; let i = index"
-            [recipeItemVar]="forItem"
-            [indexOfItem]="i"></app-recipe-item>
-    </ol>
+   <ol class="list-group list-group-numbered col-12">
+      <app-recipe-item
+         *ngFor="let forItem of recipes; let i = index"
+         [recipeItemVar]="forItem"
+         [indexOfItem]="i"></app-recipe-item>
+   </ol>
 </div>

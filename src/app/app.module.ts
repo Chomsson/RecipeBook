@@ -11,7 +11,7 @@ import {RecipeDetailComponent} from './recipes/recipe-detail/recipe-detail.compo
 import {ShoppingListEditComponent} from './shopping-list/shopping-list-edit/shopping-list-edit.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {DropdownModule} from "primeng/dropdown";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
@@ -34,6 +34,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
       NgbModule,
       DropdownModule,
       FormsModule,
+      ReactiveFormsModule,
       AppRoutingModule
    ],
    providers: [],
