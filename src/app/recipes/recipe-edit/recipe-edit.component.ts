@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {MeasureTypes} from "../../shared/enums";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {RecipeService} from "../recipe.service";
@@ -12,11 +12,11 @@ import {RecipeService} from "../recipe.service";
 export class RecipeEditComponent implements OnInit{
    recipeForm: FormGroup;
    idOfSelectedRecipe: number;
-   editMode = false;
+   //editMode = false;
    public measureTypes: MeasureTypes[] = Object.values(MeasureTypes);
 
 
-   constructor(private route: ActivatedRoute, private recipeService: RecipeService) {
+   constructor(private route: ActivatedRoute, public recipeService: RecipeService, private router: Router) {
    }
 
    ngOnInit() {
@@ -24,7 +24,7 @@ export class RecipeEditComponent implements OnInit{
          .subscribe(
             (params: Params) =>{
               this.idOfSelectedRecipe = +params['id'];
-              this.editMode = params['id'] != null;
+              this.recipeService.editMode = params['id'] != null;
               this.initForm();
             }
          )
@@ -36,7 +36,7 @@ export class RecipeEditComponent implements OnInit{
       let recipeEditDescription = '';
       let recipeEditIngredients = new FormArray<FormGroup>([])
 
-      if(this.editMode){
+      if(this.recipeService.editMode){
          const loadedRecipe = this.recipeService.getRecipe(this.idOfSelectedRecipe);
          recipeEditName = loadedRecipe.name;
          recipeEditImgPath = loadedRecipe.imgPath;
@@ -69,12 +69,13 @@ export class RecipeEditComponent implements OnInit{
 
    onSubmit(){
       // console.log(this.recipeForm.value);
-      if(this.editMode){
-         this.recipeService.updateRecipeFromEditPage(this.idOfSelectedRecipe, this.recipeForm.value)
+      if(this.recipeService.editMode){
+         this.recipeService.updateRecipeFromEditPage(this.idOfSelectedRecipe, this.recipeForm.value);
+         // this.router.navigate(['../'], {relativeTo: this.route});
       }else{
          this.recipeService.addRecipeFromEditPage(this.recipeForm.value);
       }
-
+      this.onFormClearButtonClick();
    }
 
    onDeleteIngredientFromRecipeEdit(index:number){
@@ -95,8 +96,16 @@ export class RecipeEditComponent implements OnInit{
    }
 
    onFormClearButtonClick(){
-      this.recipeForm.reset();
-      this.editMode = false;
+      if(this.recipeService.editMode){
+         this.router.navigate(['../'], {relativeTo: this.route});
+      }
+      else{
+         this.recipeForm.reset();
+         this.recipeForm.patchValue({
+            'imgPath': 'assets/vegvisir.jpg'
+         })
+         this.recipeService.editMode = false;
+      }
    }
 
    get controls(){

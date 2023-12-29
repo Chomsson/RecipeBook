@@ -4,9 +4,9 @@
          <div class="row">
             <div class="col-12">
                <h3 style="color:steelblue"
-                   *ngIf="!editMode">Add Recipe</h3>
+                   *ngIf="!recipeService.editMode">Add Recipe</h3>
                <h3 style="color:steelblue"
-                   *ngIf="editMode">Editing Recipe number: {{idOfSelectedRecipe + 1}}</h3>
+                   *ngIf="recipeService.editMode">Editing Recipe number: {{idOfSelectedRecipe + 1}}</h3>
             </div>
          </div>
          <div class="col-12 input-group w-100">

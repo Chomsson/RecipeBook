@@ -9,11 +9,13 @@
    </div>
 </div>
 <div class="row">
-   <div class="col-12">
+   <div class="col-3">
       <div ngbDropdown ngbDropdownToggle class="btn btn-primary"
            style="cursor: pointer; top:auto;"
            id="dropdownMenuLink"
-           aria-expanded="false">Recipe Options
+           aria-expanded="false">Recipe Options<span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
+                                    *ngIf="ingredientAlert">Ingredients added to shopping list!</span>
          <ul ngbDropdownMenu aria-labelledby="dropdownMenuLink" style="position: absolute;">
             <li ngbDropdownItem (click)="addIngredientsToShoppingList()">Add ingredients to Shopping List</li>
             <li ngbDropdownItem routerLink="/recipes/{{idOfRecipe}}/edit">Edit Recipe</li>
@@ -21,6 +23,14 @@
          </ul>
       </div>
    </div>
+<!--   <div class="col-9">-->
+<!--      <div class="alert alert-success" -->
+<!--         *ngIf="ingredientAlert">-->
+<!--         <div>-->
+<!--            Ingredients added to shopping list!-->
+<!--         </div>-->
+<!--      </div>-->
+<!--   </div>-->
 </div>
 <br>
 <div class="row">

@@ -11,6 +11,7 @@ import {Subject} from "rxjs";
 export class RecipeService {
 
    recipesChangedSubject: Subject<Recipe[]> = new Subject<Recipe[]>();
+   editMode:boolean = false;
 
    private recipes: Recipe[] = [
       new Recipe('Kebab box XXL',
@@ -57,5 +58,6 @@ export class RecipeService {
    deleteRecipe(index: number){
       this.recipes.splice(index, 1);
       this.recipesChangedSubject.next(this.recipes.slice());
+
    }
 }
