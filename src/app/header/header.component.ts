@@ -6,8 +6,9 @@ import {Component, EventEmitter, Output} from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-    @Output() viewSelected = new EventEmitter<string>();
-    onSelectView(featureFromTemplate:string){
-        this.viewSelected.emit(featureFromTemplate);
-    }
+    // @Output() viewSelected = new EventEmitter<string>();
+    // onSelectView(featureFromTemplate:string){
+    //     this.viewSelected.emit(featureFromTemplate);
+    // }
+
 }
