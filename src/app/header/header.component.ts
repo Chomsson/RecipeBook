@@ -19,6 +19,6 @@ export class HeaderComponent {
    }
 
    onFetchDataClick(){
-      this.dsService.fetchRecipesFromDB()
+      this.dsService.fetchRecipesFromDB().subscribe();
    }
 }

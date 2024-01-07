@@ -13,24 +13,25 @@ export class RecipeService {
    recipesChangedSubject: Subject<Recipe[]> = new Subject<Recipe[]>();
    editMode:boolean = false;
 
-   private recipes: Recipe[] = [
-      new Recipe('Kebab box XXL',
-         'bez surówek hehe mordo',
-         'assets/kebab-box.jpg',
-         [
-            new Ingredient('Chicken meat', 500, MeasureTypes.g),
-            new Ingredient('Fries', 200, MeasureTypes.g)
-         ]
-         ),
-      new Recipe('burger',
-         'fat burger',
-         'assets/burger.avif',
-         [
-            new Ingredient('Bun', 1, MeasureTypes.pieces),
-            new Ingredient('Meat', 300, MeasureTypes.g),
-            new Ingredient('Cheese', 2, MeasureTypes.slices)
-         ]),
-   ];
+   private recipes: Recipe[] = [];
+   //    [
+   //    new Recipe('Kebab box XXL',
+   //       'bez surówek hehe mordo',
+   //       'assets/kebab-box.jpg',
+   //       [
+   //          new Ingredient('Chicken meat', 500, MeasureTypes.g),
+   //          new Ingredient('Fries', 200, MeasureTypes.g)
+   //       ]
+   //       ),
+   //    new Recipe('burger',
+   //       'fat burger',
+   //       'assets/burger.avif',
+   //       [
+   //          new Ingredient('Bun', 1, MeasureTypes.pieces),
+   //          new Ingredient('Meat', 300, MeasureTypes.g),
+   //          new Ingredient('Cheese', 2, MeasureTypes.slices)
+   //       ]),
+   // ];
    constructor(private shoppingListService: ShoppingListService) { }
 
    setRecipes(recipesInMethod: Recipe[]){
